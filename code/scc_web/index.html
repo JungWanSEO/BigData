@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>Modern Business - Start Bootstrap Template</title>
+
+		<!-- Bootstrap Core CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Custom CSS -->
+		<link href="css/modern-business.css" rel="stylesheet">
+
+		<!-- Custom Fonts -->
+		<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+	</head>
+
+	<body>
+
+		<!-- 네비게이션 생성 -->
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<!-- 모바일로 봤을 때 버튼배경으로 변경 -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.html"><img src="img/electronic_car_icon.png"/></a>
+				</div>
+				<!-- navigation에 있는 메뉴들의 링크들을 생성-->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a href="about.html">About</a>
+						</li>
+						<li>
+							<a href="services.html">Services</a>
+						</li>
+						<li>
+							<a href="contact.html">Contact</a>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="portfolio-1-col.html">1 Column Portfolio</a>
+								</li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="blog-home-1.html">Blog Home 1</a>
+								</li>
+							
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+
+								<li>
+									<a href="faq.html">Q&A</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container -->
+		</nav>
+
+		<!-- Header Carousel -->
+		<header id="myCarousel" class="carousel slide">
+			<!-- slider의 갯수를 생성 -->
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+				<li data-target="#myCarousel" data-slide-to="3"></li>
+				<li data-target="#myCarousel" data-slide-to="4"></li>
+			</ol>
+
+			<!--슬라이드 쇼를 생성하기 위한 공간 -->
+			<div class="carousel-inner">
+				<div class="item active">
+					<div class="carousel-caption">
+						<img src="img/electronic_info1.png" alt="First slide"/>
+					</div>
+				</div>
+				<div class="item">
+					<div class="carousel-caption">
+						<img src="img/electronic_info2.png" alt="Second slide"/>
+					</div>
+				</div>
+				<div class="item">
+					<div class="carousel-caption">
+						<img src="img/electronic_info3.png" alt="Third slide"/>
+					</div>
+				</div>
+				<div class="item">
+					<div class="carousel-caption">
+						<img src="img/electronic_info4.png" alt="Fourth slide"/>
+					</div>
+				</div>
+				<div class="item">
+					<div class="carousel-caption">
+						<img src="img/electronic_info5.png" alt="Fifth slide"/>
+					</div>
+				</div>
+			</div>
+
+			<!-- Controls -->
+			<a class="left carousel-control" href="#myCarousel" data-slide="prev"> <span class="icon-prev"></span> </a>
+			<a class="right carousel-control" href="#myCarousel" data-slide="next"> <span class="icon-next"></span> </a>
+		</header>
+
+		<!-- Page Content -->
+		<div class="container">
+			<div class="page-header">
+				<h1>현재 각 지역별 전기차 충전소 개수 현황</h1>
+			</div>
+			<div id="chart"></div>
+
+			<!-- Footer -->
+			<footer>
+				<div class="row">
+					<div class="col-lg-12">
+						<p>
+							Copyright &copy; Your Website 2016
+						</p>
+					</div>
+				</div>
+			</footer>
+
+		</div>
+		<!-- /.container -->
+
+		<!-- jQuery -->
+		<script src="js/jquery.js"></script>
+
+		<!-- Bootstrap Core JavaScript -->
+		<script src="js/bootstrap.min.js"></script>
+		<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+		
+		<!-- Script to Activate the Carousel -->
+		<script>
+						$('.carousel').carousel({
+			interval: 4000 //changes the speed
+			});
+
+			window.addEventListener('message', function(e) {
+			var opts = e.data.opts,
+			data = e.data.data;
+
+			return main(opts, data);
+			});
+
+			var defaults = {
+			margin: {top: 24, right: 0, bottom: 0, left: 0},
+			rootname: "TOP",
+			format: ",d",
+			title: "",
+			width: 960,
+			height: 600
+			};
+
+			function main(o, data) {
+			var root,
+			opts = $.extend(true, {}, defaults, o),
+			formatNumber = d3.format(opts.format),
+			rname = opts.rootname,
+			margin = opts.margin,
+			theight = 36 + 16;
+
+			$('#chart').width(opts.width).height(opts.height);
+			var width = opts.width - margin.left - margin.right,
+			height = opts.height - margin.top - margin.bottom - theight,
+			transitioning;
+
+			var color = d3.scale.category20c();
+
+			var x = d3.scale.linear()
+			.domain([0, width])
+			.range([0, width]);
+
+			var y = d3.scale.linear()
+			.domain([0, height])
+			.range([0, height]);
+
+			var treemap = d3.layout.treemap()
+			.children(function(d, depth) { return depth ? null : d._children; })
+			.sort(function(a, b) { return a.value - b.value; })
+			.ratio(height / width * 0.5 * (1 + Math.sqrt(5)))
+			.round(false);
+
+			var svg = d3.select("#chart").append("svg")
+			.attr("width", width + margin.left + margin.right)
+			.attr("height", height + margin.bottom + margin.top)
+			.style("margin-left", -margin.left + "px")
+			.style("margin.right", -margin.right + "px")
+			.append("g")
+			.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+			.style("shape-rendering", "crispEdges");
+
+			var grandparent = svg.append("g")
+			.attr("class", "grandparent");
+
+			grandparent.append("rect")
+			.attr("y", -margin.top)
+			.attr("width", width)
+			.attr("height", margin.top);
+
+			grandparent.append("text")
+			.attr("x", 6)
+			.attr("y", 6 - margin.top)
+			.attr("dy", ".75em");
+
+			if (opts.title) {
+			$("#chart").prepend("<p class='title'>" + opts.title + "</p>");
+			}
+			if (data instanceof Array) {
+			root = { key: rname, values: data };
+			} else {
+			root = data;
+			}
+
+			initialize(root);
+			accumulate(root);
+			layout(root);
+			console.log(root);
+			display(root);
+
+			if (window.parent !== window) {
+			var myheight = document.documentElement.scrollHeight || document.body.scrollHeight;
+			window.parent.postMessage({height: myheight}, '*');
+			}
+
+			function initialize(root) {
+			root.x = root.y = 0;
+			root.dx = width;
+			root.dy = height;
+			root.depth = 0;
+			}
+
+			// 내부 노드에 대한 값을 집계.
+			// 이 작업은 일반적으로 트리 맵 레이아웃에서 수행하지만 사용자 정의 구현 때문에 여기서는 수행하지 않음
+			// 또한 레이아웃을 계산할 때 자식을 덮어 쓰지 않도록 원본 자식 (_children)의 스냅 샷을 만듬
+			function accumulate(d) {
+			return (d._children = d.values)
+			? d.value = d.values.reduce(function(p, v) { return p + accumulate(v); }, 0)
+			: d.value;
+			}
+
+			// treemap 레이아웃을 재귀 적으로 계산하여 각 형제 그룹
+
+			// 부모 셀의 크기가 아니라 동일한 크기 (1 × 1)를 사용.
+			// 이렇게 하면 현재 확대 / 축소 상태의 레이아웃이 최적화. 
+			// 개체가 각 형제 그룹의 부모 노드에 대해 만들어 지므로
+			// 부모의 치수는 재사용 될 때 폐기되지 않음.
+			// 각 그룹 형제가 1x1로 배치 된 경우 절대 좌표를 사용하여 크기를 조정
+			// 이렇게하면 뷰포트를 사용하여 확대 / 축소 할 수 있음
+			function layout(d) {
+			if (d._children) {
+			treemap.nodes({_children: d._children});
+			d._children.forEach(function(c) {
+			c.x = d.x + c.x * d.dx;
+			c.y = d.y + c.y * d.dy;
+			c.dx *= d.dx;
+			c.dy *= d.dy;
+			c.parent = d;
+			layout(c);
+			});
+			}
+			}
+
+			function display(d) {
+			grandparent
+			.datum(d.parent)
+			.on("click", transition)
+			.select("text")
+			.text(name(d));
+
+			var g1 = svg.insert("g", ".grandparent")
+			.datum(d)
+			.attr("class", "depth");
+
+			var g = g1.selectAll("g")
+			.data(d._children)
+			.enter().append("g");
+
+			g.filter(function(d) { return d._children; })
+			.classed("children", true)
+			.on("click", transition);
+
+			var children = g.selectAll(".child")
+			.data(function(d) { return d._children || [d]; })
+			.enter().append("g");
+
+			children.append("rect")
+			.attr("class", "child")
+			.call(rect)
+			.append("title")
+			.text(function(d) { return d.key + " (" + formatNumber(d.value) + ")"; });
+			children.append("text")
+			.attr("class", "ctext")
+			.text(function(d) { return d.key; })
+			.call(text2);
+
+			g.append("rect")
+			.attr("class", "parent")
+			.call(rect);
+
+			var t = g.append("text")
+			.attr("class", "ptext")
+			.attr("dy", ".75em");
+
+			t.append("tspan")
+			.text(function(d) { return d.key; });
+			t.append("tspan")
+			.attr("dy", "1.0em")
+			.text(function(d) { return formatNumber(d.value); });
+			t.call(text);
+
+			g.selectAll("rect")
+			.style("fill", function(d) { return color(d.key); });
+
+			function transition(d) {
+			if (transitioning || !d) return;
+			transitioning = true;
+
+			var g2 = display(d),
+			t1 = g1.transition().duration(750),
+			t2 = g2.transition().duration(750);
+
+			// 새 요소를 입력 한 후만 도메인을 업데이트
+			x.domain([d.x, d.x + d.dx]);
+			y.domain([d.y, d.y + d.dy]);
+
+			//전환하는 동안 앤티 앨리어싱을 사용
+			svg.style("shape-rendering", null);
+
+			// 부모 노드 위에 자식 노드를 그림.
+			svg.selectAll(".depth").sort(function(a, b) { return a.depth - b.depth; });
+
+			// 페이드 인 입력 텍스트.
+			g2.selectAll("text").style("fill-opacity", 0);
+
+			// 새보기로 전환
+			t1.selectAll(".ptext").call(text).style("fill-opacity", 0);
+			t1.selectAll(".ctext").call(text2).style("fill-opacity", 0);
+			t2.selectAll(".ptext").call(text).style("fill-opacity", 1);
+			t2.selectAll(".ctext").call(text2).style("fill-opacity", 1);
+			t1.selectAll("rect").call(rect);
+			t2.selectAll("rect").call(rect);
+
+			//전환이 완료되면 이전 노드를 제거
+			t1.remove().each("end", function() {
+			svg.style("shape-rendering", "crispEdges");
+			transitioning = false;
+			});
+			}
+
+			return g;
+			}
+
+			function text(text) {
+			text.selectAll("tspan")
+			.attr("x", function(d) { return x(d.x) + 6; });
+			text.attr("x", function(d) { return x(d.x) + 6; })
+			.attr("y", function(d) { return y(d.y) + 6; })
+			.style("opacity", function(d) { return this.getComputedTextLength() < x(d.x + d.dx) - x(d.x) ? 1 : 0; });
+			}
+
+			function text2(text) {
+			text.attr("x", function(d) { return x(d.x + d.dx) - this.getComputedTextLength() - 6; })
+			.attr("y", function(d) { return y(d.y + d.dy) - 6; })
+			.style("opacity", function(d) { return this.getComputedTextLength() < x(d.x + d.dx) - x(d.x) ? 1 : 0; });
+			}
+
+			function rect(rect) {
+			rect.attr("x", function(d) { return x(d.x); })
+			.attr("y", function(d) { return y(d.y); })
+			.attr("width", function(d) { return x(d.x + d.dx) - x(d.x); })
+			.attr("height", function(d) { return y(d.y + d.dy) - y(d.y); });
+			}
+
+			function name(d) {
+			return d.parent
+			? name(d.parent) + " / " + d.key + " (" + formatNumber(d.value) + ")"
+			: d.key + " (" + formatNumber(d.value) + ")";
+			}
+			}
+
+			if (window.location.hash === "") {
+			d3.json("countries.json", function(err, res) {
+			if (!err) {
+			console.log(res);
+			var data = d3.nest().key(function(d) { return d.region; }).key(function(d) { return d.subregion; }).entries(res);
+			main({title: "통계"}, {key: "World", values: data});
+			}
+			});
+		}
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,169 @@
+/*!
+ * Start Bootstrap - Modern Business (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+/* Global Styles */
+
+html, body {
+	height: 100%;
+}
+
+body {
+	padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+.img-portfolio {
+	margin-bottom: 30px;
+}
+
+.img-hover:hover {
+	opacity: 0.8;
+}
+
+nav .container {
+	width: 100%;
+	background: #2EFE2E;
+}
+
+nav .container .navbar-header .navbar-brand img {
+	width: auto;
+	height: auto;
+	max-width: 150px;
+	max-height: 70px;
+}
+/* Home Page Carousel */
+
+header.carousel {
+	height: 65%;
+	background-size: cover;
+}
+
+header.carousel .item, header.carousel .item.active, header.carousel .carousel-inner {
+	height: 100%;
+	background-color: black;
+	background-position: center;
+	background-size: cover;
+}
+
+header.carousel .carousel-caption img {
+
+	width: 90%;
+	height: 90%;
+}
+
+.container {
+	
+	width: 100%;
+	height: 100%;
+}
+
+.container .page-header{
+	margin: 0 auto;
+	text-align: center;
+}
+
+.container #chart {
+	margin: 0 auto;
+	background: #fff;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.title {
+	font-weight: bold;
+	font-size: 24px;
+	text-align: center;
+	margin-top: 6px;
+	margin-bottom: 6px;
+}
+text {
+	pointer-events: none;
+}
+
+.grandparent text {
+	font-weight: bold;
+}
+
+rect {
+	fill: none;
+	stroke: #fff;
+}
+
+rect.parent, .grandparent rect {
+	stroke-width: 2px;
+}
+
+rect.parent {
+	pointer-events: none;
+}
+
+.grandparent rect {
+	fill: orange;
+}
+
+.grandparent:hover rect {
+	fill: #ee9700;
+}
+
+.children rect.parent, .grandparent rect {
+	cursor: pointer;
+}
+
+.children rect.parent {
+	fill: #bbb;
+	fill-opacity: .5;
+}
+
+.children:hover rect.child {
+	fill: #bbb;
+}
+
+/* 404 Page Styles */
+
+.error-404 {
+	font-size: 100px;
+}
+
+/* Pricing Page Styles */
+
+.price {
+	display: block;
+	font-size: 50px;
+	line-height: 50px;
+}
+
+.price sup {
+	top: -20px;
+	left: 2px;
+	font-size: 20px;
+}
+
+.period {
+	display: block;
+	font-style: italic;
+}
+
+/* Footer Styles */
+
+footer {
+	margin: 50px 0;
+}
+
+/* Responsive Styles */
+
+@media (max-width: 991px) {
+	.customer-img, .img-related {
+		margin-bottom: 30px;
+	}
+}
+
+@media (max-width: 767px) {
+	.img-portfolio {
+		margin-bottom: 15px;
+	}
+
+	header.carousel .carousel {
+		height: 70%;
+	}
+}

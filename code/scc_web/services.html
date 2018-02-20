@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>Modern Business - Start Bootstrap Template</title>
+
+		<!-- Bootstrap Core CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Custom CSS -->
+		<link href="css/modern-business.css" rel="stylesheet">
+		
+		<!-- Custom Fonts -->
+		<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="js/opbeansMap.js"></script>
+	</head>
+
+	<body>
+
+		<!-- Navigation -->
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<!-- 모바일로 봤을 때 버튼배경으로 변경 -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.html"><img src="img/electronic_car_icon.png"/></a>
+				</div>
+				<!-- navigation에 있는 메뉴들의 링크들을 생성-->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a href="about.html">About</a>
+						</li>
+						<li>
+							<a href="services.html">Services</a>
+						</li>
+						<li>
+							<a href="contact.html">Contact</a>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="portfolio-1-col.html">1 Column Portfolio</a>
+								</li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="blog-home-1.html">Blog Home 1</a>
+								</li>
+
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+
+								<li>
+									<a href="faq.html">Q&A</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container -->
+		</nav>
+
+		<!-- Page Content -->
+
+		<div class="container">
+			<div class="row">
+				<div id="map" style="width: 100%; height: 800px"></div>
+			</div>
+		</div>
+		<!-- /.container -->
+
+		<!-- jQuery -->
+		<script src="js/jquery.js"></script>
+
+		<!-- Bootstrap Core JavaScript -->
+		<script src="js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+			function myMap() {
+				var count = 3;
+				
+				var arrPos = new Array();
+				var arrText = new Array();
+				arrPos[0] = new google.maps.LatLng(126.994335, 37.57305);
+				arrPos[1] = new google.maps.LatLng(126.9737531, 37.5735937);
+				arrPos[2] = new google.maps.LatLng(127.009754, 37.566981);
+				var mapCanvas = document.getElementById("map");
+				var mapOptions = {
+					center : new google.maps.LatLng(37, 127.1),
+					zoom : 9
+					
+					
+				};
+				
+				var map = new google.maps.Map(mapCanvas, mapOptions);
+				
+				for(var idx=0; idx < count; idx++){
+					var marker = new google.maps.Marker({
+						map: map,
+						
+						animation: google.maps.Animation.DROP,
+						position: arrPos[idx],
+						visible: true
+					});
+				}
+				
+			}
+		</script>
+		<script src="https:/maps.googleapis.com/maps/api/js?key=AIzaSyDU6CNCmGgl3hFqTe4US5gHMhp17ztGALQ&callback=myMap"></script>
+	</body>
+
+</html>

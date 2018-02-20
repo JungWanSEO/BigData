@@ -1,0 +1,722 @@
+[
+  {
+    "key": "종로구",
+    "region": "한국",
+    "subregion": "서울특별시",
+    "value": 2
+  },
+  {
+    "key": "중구",
+    "region": "한국",
+    "subregion": "서울특별시",
+    "value": 4
+  },
+  {
+    "key": "용산구",
+    "region": "한국",
+    "subregion": "서울특별시",
+    "value": 1
+  },
+  {
+    "key": "성동구",
+    "region": "한국",
+    "subregion": "서울특별시",
+    "value": 4
+  },
+  {
+    "key": "광진구",
+    "region": "한국",
+    "subregion": "서울특별시",
+    "value": 1
+  },
+  {
+    "key": "동대문구",
+    "region": "한국",
+    "subregion": "서울특별시",
+    "value": 3
+  },
+  {
+    "key": "중랑구",
+    "region": "한국",
+    "subregion": "서울특별시",
+    "value": 4
+  },
+  {
+    "key": "성북구",
+    "region": "한국",
+    "subregion": "서울특별시",
+    "value": 4
+  },
+  {
+    "key": "강북구",
+    "region": "한국",
+    "subregion": "서울특별시",
+    "value": 1
+  },
+  {
+    "key": "도봉구",
+    "region": "한국",
+    "subregion": "서울특별시",
+    "value": 2
+  },
+  {
+    "key": "노원구",
+    "region": "한국",
+    "subregion": "서울특별시",
+    "value": 3
+  },
+  {
+    "key": "은평구",
+    "region": "한국",
+    "subregion": "서울특별시",
+    "value": 4
+  },
+  {
+    "key": "서대문구",
+    "region": "한국",
+    "subregion": "서울특별시",
+    "value": 1
+  },
+  {
+    "key": "마포구",
+    "region": "한국",
+    "subregion": "서울특별시",
+    "value": 5
+  },
+  {
+    "key": "양천구",
+    "region": "한국",
+    "subregion": "서울특별시",
+    "value": 4
+  },
+  {
+    "key": "강서구",
+    "region": "한국",
+    "subregion": "서울특별시",
+    "value": 6
+  },
+  {
+    "key": "구로구",
+    "region": "한국",
+    "subregion": "서울특별시",
+    "value": 5
+  },
+  {
+    "key": "금천구",
+    "region": "한국",
+    "subregion": "서울특별시",
+    "value": 4
+  },
+  {
+    "key": "동작구",
+    "region": "한국",
+    "subregion": "서울특별시",
+    "value": 2
+  },
+  {
+    "key": "관악구",
+    "region": "한국",
+    "subregion": "서울특별시",
+    "value": 1
+  },
+  {
+    "key": "서초구",
+    "region": "한국",
+    "subregion": "서울특별시",
+    "value": 4
+  },
+  {
+    "key": "강남구",
+    "region": "한국",
+    "subregion": "서울특별시",
+    "value": 6
+  },
+  {
+    "key": "송파구",
+    "region": "한국",
+    "subregion": "서울특별시",
+    "value": 2
+  },
+  {
+    "key": "강동구",
+    "region": "한국",
+    "subregion": "서울특별시",
+    "value": 3
+  },
+  {
+    "key": "춘천시",
+    "region": "한국",
+    "subregion": "강원도",
+    "value": 2
+  },
+  {
+    "key": "원주시",
+    "region": "한국",
+    "subregion": "강원도",
+    "value": 4
+  },
+  {
+    "key": "강릉시",
+    "region": "한국",
+    "subregion": "강원도",
+    "value": 5
+  },
+  {
+    "key": "횡성군",
+    "region": "한국",
+    "subregion": "강원도",
+    "value": 3
+  },
+  {
+    "key": "영월군",
+    "region": "한국",
+    "subregion": "강원도",
+    "value": 1
+  },
+  {
+    "key": "평창군",
+    "region": "한국",
+    "subregion": "강원도",
+    "value": 4
+  },
+  {
+    "key": "수원시",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 7
+  },
+  {
+    "key": "성남시",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 16
+  },
+  {
+    "key": "의정부",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 2
+  },
+  {
+    "key": "안양시",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 5
+  },
+  {
+    "key": "부천시",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 1
+  },
+  {
+    "key": "광명시",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 2
+  },
+  {
+    "key": "평택시",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 3
+  },
+  {
+    "key": "동두천시",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 1
+  },
+  {
+    "key": "안산시",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 5
+  },
+  {
+    "key": "고양시",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 12
+  },
+  {
+    "key": "일산 서구",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 5
+  },
+  {
+    "key": "과천시",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 1
+  },
+  {
+    "key": "구리시",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 2
+  },
+  {
+    "key": "남양주시",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 6
+  },
+  {
+    "key": "오산시",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 2
+  },
+  {
+    "key": "시흥시",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 1
+  },
+  {
+    "key": "군포시",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 2
+  },
+  {
+    "key": "의왕시",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 2
+  },
+  {
+    "key": "하남시",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 3
+  },
+  {
+    "key": "용인시",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 16
+  },
+  {
+    "key": "파주시",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 7
+  },
+  {
+    "key": "이천시",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 5
+  },
+  {
+    "key": "안성시",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 5
+  },
+  {
+    "key": "김포시",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 1
+  },
+  {
+    "key": "화성시",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 5
+  },
+  {
+    "key": "광주시",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 2
+  },
+  {
+    "key": "포천시",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 3
+  },
+  {
+    "key": "여주시",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 5
+  },
+  {
+    "key": "가평군",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 4
+  },
+  {
+    "key": "양평군",
+    "region": "한국",
+    "subregion": "경기도",
+    "value": 3
+  },
+  {
+    "key": "중구",
+    "region": "한국",
+    "subregion": "인천광역시",
+    "value": 4
+  },
+  {
+    "key": "동구",
+    "region": "한국",
+    "subregion": "인천광역시",
+    "value": 2
+  },
+  {
+    "key": "남구",
+    "region": "한국",
+    "subregion": "인천광역시",
+    "value": 3
+  },
+  {
+    "key": "연수구",
+    "region": "한국",
+    "subregion": "인천광역시",
+    "value": 4
+  },
+  {
+    "key": "남동구",
+    "region": "한국",
+    "subregion": "인천광역시",
+    "value": 3
+  },
+  {
+    "key": "부평구",
+    "region": "한국",
+    "subregion": "인천광역시",
+    "value": 1
+  },
+  {
+    "key": "계양구",
+    "region": "한국",
+    "subregion": "인천광역시",
+    "value": 1
+  },
+  {
+    "key": "봉오대로",
+    "region": "한국",
+    "subregion": "인천광역시",
+    "value": 1
+  },
+  {
+    "key": "서구",
+    "region": "한국",
+    "subregion": "인천광역시",
+    "value": 3
+  },
+  {
+    "key": "강화군",
+    "region": "한국",
+    "subregion": "인천광역시",
+    "value": 1
+  },
+  {
+    "key": "청주시",
+    "region": "한국",
+    "subregion": "충청북도",
+    "value": 3
+  },
+  {
+    "key": "충주시",
+    "region": "한국",
+    "subregion": "충청북도",
+    "value": 4
+  },
+  {
+    "key": "옥천군",
+    "region": "한국",
+    "subregion": "충청북도",
+    "value": 1
+  },
+  {
+    "key": "영동군",
+    "region": "한국",
+    "subregion": "충청북도",
+    "value": 1
+  },
+  {
+    "key": "진천군",
+    "region": "한국",
+    "subregion": "충청북도",
+    "value": 2
+  },
+  {
+    "key": "음성군",
+    "region": "한국",
+    "subregion": "충청북도",
+    "value": 3
+  },
+  {
+    "key": "천안시",
+    "region": "한국",
+    "subregion": "충청남도",
+    "value": 3
+  },
+  {
+    "key": "보령시",
+    "region": "한국",
+    "subregion": "충청남도",
+    "value": 1
+  },
+  {
+    "key": "아산시",
+    "region": "한국",
+    "subregion": "충청남도",
+    "value": 5
+  },
+  {
+    "key": "서산시",
+    "region": "한국",
+    "subregion": "충청남도",
+    "value": 2
+  },
+  {
+    "key": "당진시",
+    "region": "한국",
+    "subregion": "충청남도",
+    "value": 9
+  },
+  {
+    "key": "영도구",
+    "region": "한국",
+    "subregion": "부산광역시",
+    "value": 1
+  },
+  {
+    "key": "부산진구",
+    "region": "한국",
+    "subregion": "부산광역시",
+    "value": 2
+  },
+  {
+    "key": "금정구",
+    "region": "한국",
+    "subregion": "부산광역시",
+    "value": 5
+  },
+  {
+    "key": "동래구",
+    "region": "한국",
+    "subregion": "부산광역시",
+    "value": 1
+  },
+  {
+    "key": "남구",
+    "region": "한국",
+    "subregion": "부산광역시",
+    "value": 2
+  },
+  {
+    "key": "북구",
+    "region": "한국",
+    "subregion": "부산광역시",
+    "value": 2
+  },
+  {
+    "key": "해운대구",
+    "region": "한국",
+    "subregion": "부산광역시",
+    "value": 4
+  },
+  {
+    "key": "해운대구",
+    "region": "한국",
+    "subregion": "부산광역시",
+    "value": 4
+  },
+  {
+    "key": "사하구",
+    "region": "한국",
+    "subregion": "부산광역시",
+    "value": 2
+  },
+  {
+    "key": "연제구",
+    "region": "한국",
+    "subregion": "부산광역시",
+    "value": 3
+  },
+  {
+    "key": "사상구",
+    "region": "한국",
+    "subregion": "부산광역시",
+    "value": 2
+  },
+  {
+    "key": "기장군",
+    "region": "한국",
+    "subregion": "부산광역시",
+    "value": 4
+  },
+  {
+    "key": "수성구",
+    "region": "한국",
+    "subregion": "대구광역시",
+    "value": 6
+  },
+  {
+    "key": "달서구",
+    "region": "한국",
+    "subregion": "대구광역시",
+    "value": 5
+  },
+  {
+    "key": "달성군",
+    "region": "한국",
+    "subregion": "대구광역시",
+    "value": 1
+  },
+  {
+    "key": "중구",
+    "region": "한국",
+    "subregion": "대구광역시",
+    "value": 1
+  },
+  {
+    "key": "동구",
+    "region": "한국",
+    "subregion": "대구광역시",
+    "value": 1
+  },
+  {
+    "key": "서구",
+    "region": "한국",
+    "subregion": "대구광역시",
+    "value": 3
+  },
+  {
+    "key": "남구",
+    "region": "한국",
+    "subregion": "대구광역시",
+    "value": 2
+  },
+  {
+    "key": "북구",
+    "region": "한국",
+    "subregion": "대구광역시",
+    "value": 2
+  },
+  {
+   	"key": "札幌市",
+    "region": "일본",
+    "subregion": "北海道",
+    "value": 148
+  },
+  {
+   	"key": "江別市",
+    "region": "일본",
+    "subregion": "北海道",
+    "value": 8
+  },
+    {
+   	"key": "空知郡",
+    "region": "일본",
+    "subregion": "北海道",
+    "value": 2
+  },
+  {
+   	"key": "広尾郡",
+    "region": "일본",
+    "subregion": "北海道",
+    "value": 2
+  },
+  {
+   	"key": "久遠郡せたな町",
+    "region": "일본",
+    "subregion": "北海道",
+    "value": 2
+  },
+  {
+   	"key": "根室市",
+    "region": "일본",
+    "subregion": "北海道",
+    "value": 3
+  },
+  {
+   	"key": "帯広市",
+    "region": "일본",
+    "subregion": "北海道",
+    "value": 23
+  },
+  {
+   	"key": "登別市",
+    "region": "일본",
+    "subregion": "北海道",
+    "value": 6
+  },
+  {
+   	"key": "滝川市",
+    "region": "일본",
+    "subregion": "北海道",
+    "value": 5
+  },
+  {
+   	"key": "留萌市",
+    "region": "일본",
+    "subregion": "北海道",
+    "value": 3
+  },
+  {
+   	"key": "網走市",
+    "region": "일본",
+    "subregion": "北海道",
+    "value": 16
+  },
+  {
+   	"key": "虻田郡",
+    "region": "일본",
+    "subregion": "北海道",
+    "value": 14
+  },
+  {
+   	"key": "名寄市",
+    "region": "일본",
+    "subregion": "北海道",
+    "value": 4
+  },
+  {
+   	"key": "茅部郡",
+    "region": "일본",
+    "subregion": "北海道",
+    "value": 5
+  },
+  {
+   	"key": "目梨郡",
+    "region": "일본",
+    "subregion": "北海道",
+    "value": 3
+  },
+  {
+   	"key": "紋別郡",
+    "region": "일본",
+    "subregion": "北海道",
+    "value": 4
+  },
+  {
+   	"key": "京都市",
+    "region": "일본",
+    "subregion": "京都府",
+    "value": 139
+  },
+  {
+   	"key": "京丹後市",
+    "region": "일본",
+    "subregion": "京都府",
+    "value": 24
+  },
+  {
+   	"key": "京田辺市",
+    "region": "일본",
+    "subregion": "京都府",
+    "value": 5
+  }
+]
