@@ -1,0 +1,211 @@
+#우리가 사용할 모듈 적용
+import urllib.request   #url을 통해 데이터 요청을 위한 모듈 사용
+from bs4 import BeautifulSoup  #BeautifulSoup모듈 사용
+
+target_url = 'http://52.68.130.249/textboard/'
+
+# 게시글의 제목과 목록을 가져오는 함수 =============================================
+
+def fetch_post_list():	#함수 선언
+    
+    URL = target_url #주소를 URL이라는 변수에 넣겠다
+    res = urllib.request.urlopen(URL)  #URL주소를 열겠다고 요청한 것(글의 목록에 있는 페이지의 데이터)을 통해 나온 값을 res라는 변수에 넣겠다.
+    html = res.read()  #html이라는 변수에 URL주소 읽은 것(res에 대한)을 넣겠다.
+
+    soup = BeautifulSoup(html, 'html.parser')
+    #읽어들인 html을 BeautifulSoup 객체로 생성 -> 'html.parser'는 html변수에 저장된 데이터가 html코드라서 저렇게 적어야 한다고 합니다.(다른 parser를 넣을 수도 있대요) 
+
+    table = soup.find('table', class_='kingkongboard-table')
+    #table이라는 변수에 soup변수안에 있는 내용을 찾겠다 -> 그 내용은 'table'이라는 곳에 class이름이 'kingkongboard-table'에 속한 내용이다
+    
+    title_list = table.find_all('td', class_='kingkongboard-list-title')
+    #table변수에서 <td>(html에서 테이블 만들때 td썻던거 기억하시죠?)들 중에서 클래스 이름이 'kingkongboard-list-title'에 속한 <td>의 내용들을 모두 찾아서(find_all)
+    #title_list라는 변수에 넣겠다. -> 결과물 : 글의 제목들
+    
+    links = []
+    #links라는 리스트 변수를 만든다. -> 게시물의 링크를 저장하기위한 배열
+    
+    links = [td.find('a')['href'] for td in title_list]
+    #table에서 추출해낸 글의 제목들을 for문을 이용해서 <a>태그를 찾아내고, <a> 태그중에서 <href> 속성을 모두 뽑아내서(즉 <a href=???>이런 형태 기억하시죠?) 생성한 배열(links)에 저장
+
+    return links
+    #이제 추출한 최종 결과를 반환
+
+result = fetch_post_list( )
+print(result)
+
+# 게시글의 세부 내역을  가져오는 함수 ==================================================
+
+def fetch_post_contents(link) : #함수 선언 -> link라는 인수를 받도록 함
+
+    URL = link
+    #인수로 전달 받은 link를 URL변수에 넣겠다.
+    
+    res = urllib.request.urlopen(URL)
+    #게시물에 들어있는 URL에 urlopen함수를 이용해서 데이터를 요청한 것을 통해 나온 결과값을 res변수에 넣겠다.
+    
+    html = res.read( )
+    #html이라는 변수에 URL주소 읽은 것(res에 대한)을 넣겠다.
+    
+    soup = BeautifulSoup(html,'html.parser')
+    #마찬가지로 읽어들인 html을 BeautifulSoup 객체로 생성
+
+    content_table = soup.find('div',id='kingkongboard-read-table')
+    #게시물의 내용이 들어있는 kingkongboard-read-table'이라는 id를 가진 <div>태그를 추출해서 나온 결과를 content_table이라는 변수에 넣겠다.
+
+        # 글제목 , 등록 날짜 가져오는 부분 =================================================
+
+    title_section = content_table.find('div',class_='title-section')
+    #content_table변수에 저장된 <div>들 중에서 'title-section' 클래스 이름을 가진 <div>를 (즉 <div class = 'title-section'>에 속한 내용들) title_section이라는 변수에 넣겠다
+    #참고로 저 부분을 자세히 보면 글 제목뿐만 아니라 글의 등록 날짜도 존재한다고 함
+    
+    title = title_section.find('h1').text
+    #title_section'클래스에 속한 <div>들 중에서 <div>에 속한 <h1>의 내용을 title이라는 변수에 넣겠다.
+    
+    date = title_section.find('div',class_='regist-date').find('h2').text
+    #'title_section'클래스에 속한 <div>들 중에서 글의 등록날짜를 가지고 있는 regist-date라는 id를 가진 <div>(즉 <div id = regist-date>태그를 찾고 또 그 안에서 <h2>태그를 찾아 나온 값들을 text에 저장 
+    #그리고 나온 값을 date라는 변수에 넣는다.
+
+    #결과물 : title = 글 제목, date = 등록 날짜
+
+    # 글쓴이 정보를 가져오는 부분 =========================================================
+
+    writer = content_table.find('div',class_='regist-writer').find('h2').text
+    #글쓴이를 가져오기 위해서 content_table에 있는 값(<div>들이겠죠~)중에서 register-writer라는 id를 가진 <div>태그의 내용을 가져오고 또 그 안에서 <h2>태그를 찾아 나온 값들을 text에 저장하고 writer라는 변수에 넣겠다
+
+    #결과물 : writer = 글쓴이
+    
+    # 콘텐츠를 가져오는 부분 ==============================================================
+
+    content = content_table.find('div', class_='content-section').find('p').text
+    #content_table에 있는 값(마찬가지로 <div>태그들> 중에서 class이름이 'content-section'를 가지면서 그 안에 속한 <div>태그들을 가져오고 또 그 중에서 <p>태그에 있는 값을 text에 저장하고 content라는 변수에 넣겠다.
+
+    #결과물 : content = 콘텐츠
+    
+    # 이미지를 가져오는 부분 ==============================================================
+
+    image = content_table.find('div', class_='content-section').find('img')
+    #content_table에 있는 값(이제는 아시겠죠?) 중에서 클래스 이름이 'content-section'를 가지면서 그 안에 속한 <div>태그들을 가져오고 또 그 중에서 <img>태그를 찾아낸 값을 image라는 변수에 넣겠다.
+    
+    image_url = '' #여기에 공백이 들어가면 안됨 -> image_url이라는 변수에 이미지 링크를 저장
+    
+    if image: #만약에 이미지 태그가 존재한다면 (if 변수명:  변수명이 true라면 이라는 설정 -> 기억하시죠?)
+        image_url = image['src']  #이미지를 image_url이라는 변수에 넣겠다. 
+
+    #이미지가 없으면 그냥 넘어가는 겁니다.
+    
+    #결과물 : image = 이미지
+        
+    # 댓글을 가져오는 부분 =================================================================
+
+    comments = []
+    #comments라는 리스트변수를 생성 -> 댓글의 내용, 글쓴이, 날짜를 넣게 위해
+    
+    comment_section = content_table.find('div', class_='comment-section')
+    #content_table에 있는 값(마찬가지로 <div>태그들> 중에서 클래스 이름이 'comment-section'를 가지며 그 안에 속한 <div>들의 값을 comment_section이라는 변수에 넣겠다.
+
+    list_wrapper = comment_section.find('div', class_='list-wrapper')
+    #content_table에 있는 값(자주나오내요..> 중에서 클래스 이름이 'list-wrapper'를 가지며 그 안에 속한 <div>들의 값을 list_wrapper이라는 변수에 넣겠다.
+
+    comment_list = list_wrapper.find_all('div', class_='each-comment')
+    #content_table에 있는 값<또 나오네요....> 중에서 클래스 이름이 'each-comment'를 가지며 그 안에 속한 <div>들의 값을 comment_list이라는 변수에 넣겠다.
+
+    if comment_list: #comment_list변수에 태그가 추출되었을 경우
+        for comment in comment_list: #comment_list에 들어있는 값들을 for문을 이용 (comment는 for문에서 쓰이기 위한 임시 변수입니다.)
+
+            #현재 comment는 comment_list들의 값을 가지고 있는 상황입니다!
+
+            comment_box = comment.find('div', class_='comment-box')
+            #comment에 있는 값(마찬가지로 <div>태그들) 중에서 클래스 이름이 'comment-box'를 가지며 그 안에 속한 <div>들의 값을 comment_box이라는 변수에 넣겠다.
+            
+            comment_content = comment_box.find('div', class_='comment-content')
+            #comment_box에 있는 값(마찬가지로 <div>태그들) 중에서 클래스 이름이 'comment-content'를 가지며 그 안에 속한 <div>들의 값을 comment_content라는 변수에 넣겠다.
+            
+            div_writer = comment_content.find('div', class_='comment-content-writer')
+            #comment_content에 있는 값(마찬가지로 <div>태그들) 중에서 클래스 이름이 'comment-content-writer'를 가지며 그 안에 속한 <div>들의 값을 div_writer라는 변수에 넣겠다.
+
+            writer = div_writer.find('span', class_='author').text
+            #div_writer에서 추출한 <div>태그에서 클래스 이름이 'author'를 가지며 그 안에 속한 <span>태그들의 값을 text에 저장하고 writer라는 변수에 넣겠다.
+            
+            date = div_writer.find('span', class_='date').text
+            #div_writer에서 추출한 <div>태그에서 클래스 이름이 'date'를 가지며 그 안에 속한 <span>태그들의 값을 text에 저장하고 date라는 변수에 넣겠다.
+            
+            div_text = comment_content.find('div', class_='comment-content-text')
+            #comment_content에 있는 값(마찬가지로 <div>태그들) 중에서 클래스 이름이 'comment-content-tex'를 가지며 그 안에 속한 <div>들의 값을 div_text라는 변수에 넣겠다.
+            
+            comment_text = div_text.find('h2').text
+            #div_text에서 추출한 <div>태그에서 <h2>태그에 대한 내용을 text에 저장하고 comment_text라는 변수에 넣겠다. 
+
+            #그래서 나온 결과 값들을 토대로 글쓴이, 등록 날짜, 글 내용을 comments = [](댓글을 가져오는 부분 주석 바로 밑에 변수선언했던거 기억하죠?)
+            #-> comments라는 리스트변수를 생성 : 댓글의 내용, 글쓴이, 날짜를 넣게 위해
+            #이제 나온 값들을 comments 리스트 변수에 넣는다.
+            
+            comments.append({
+                'writer' : writer,
+                'date' : date,
+                'comment_text' : comment_text
+            })
+
+    #결과물 : {comment_list (그 안에는) -> writer = 글쓴이, date = 등록 날짜, comment_text = 글 내용}  --->  comments
+            
+    # 결과를 모아서 출력하는 부분 ==============================================================
+    return {
+         'title' : title,  #글제목
+         'date' : date,    #등록날짜
+         'writer' : writer,  #글쓴이
+         'content' : content,  #글 내용
+         'image' : image_url,  #이미지
+         'comments' : comments  #글쓴이,등록날짜,글내용을 포괄한 리스트
+         }
+
+ # 실제 결과를 출력하는 부분 ====================================================================
+
+links =fetch_post_list( ) #결과로 나온 리스트 값들을 links라는 변수에 넣는다 -> links는 리스트 변수가 되는 겁니다 ->  변수명 = 결과값   의 경우 결과값에 따라 변수의 형태가 결정되는 거 기억하시죠?
+for link in links : #links의 리스트 값들을 for문을 이용해서 link라는 임의의 변수에 넣는다.
+     result = fetch_post_contents(link) #결과값을 result라는 변수에 넣는다.
+     print(result)  #결과값 출력!
+
+#위 내용을 파일로 저장하는 부분 ====================================================================
+
+def crawler_running(): #함수 생성
+    
+    links = fetch_post_list() #결과로 나온 리스트 값들을 links라는 변수에 넣는다 -> 전에 있는 links랑 헷갈릴 수 있는데 지역변수의 개념!!(아주중요)이으로 변수명이 같아도 함수안에 있느냐 바깥에 있느냐 다릅니다.
+                              #여기서는 함수 안에서 쓰는 거기 때문에 변수명이 같아도 다르게 인식합니다.(자세한건 메모리 주소가 다름 -> 몰라도 됨)
+
+    with open('post.txt', 'w', encoding='utf-8') as f: #현재 작업 디렉터리(폴더)에 post.txt라는 파일을 쓰기모드로 열고 utf-8로 만든다(한글을 적어야 하니까!) 이것들을 f라는 임의의 변수로 해당 파일을 컨트롤
+                                                       #즉 저 작업한 것들이 f가 컨트롤하는 겁니다. -> f만 써도 저렇게 인식이 된다는 거죠
+
+        for link in links:   #links의 리스트 값들을 for문을 이용해서 link라는 임의의 변수에 넣는다.
+
+            result = fetch_post_contents(link) #결과값을 result라는 변수에 넣는다.
+            f.write("===" * 30 + '\n')         # === 곱하기 30 이면 60개의 = 이 생기겠져? 그리고 60개가 되면 다음줄로 넘어가게끔 설정 -> 이거는 결과물을 구분하기위해서 넣어준거임
+            f.write('글 제목 : ' + result['title'] + '\n')  #글 제목을 텍스트 파일에 적는다.
+            f.write('날짜 : ' + result['date'] + '\n')      #날짜를 텍스트 파일에 적는다.
+            f.write('글쓴이 : ' + result['writer'] + '\n')  #글쓴이를 텍스트 파일에 적는다.
+            f.write('글 내용 : ' + result['content'] + '\n') #글 내용을 텍스트 파일에 적는다.
+
+            if result['comments']:  #게시물에 댓글이 있는 경우
+                f.write('-' * 30)   # - 곱하기 30 이면 30개의 - 이 생기겠져? 마찬가지로 결과물을 구분하기위해서 넣어준거임
+                f.write('댓글')     #댓글을 텍스트에 적는다 -> 지금은 댓글의 내용이 없지만 값을 넣을려면 뭐 선언해서 넣으면 되겠죠?
+                f.write('-' * 30 + '\n')
+                count = 1     #댓글이 몇번째 댓글인지 파일에 표시해 주기 위해서 count라는 변수를 선언
+                
+                for comment in result['comments']:  #댓글들을 이용하여 for문을 사용
+                    f.write('댓글 ' + str(count) + '\n')  #이 댓글이 몇번째 댓글인지 표시해주기 위해 count를 문자열로 변환(지금 count가 정수형임)시켜주어 텍스트파일에 적는다.
+                    f.write('댓글 작성자 :  ' + comment['writer'] + '\n')  #마찬가지로 댓글 작성자를 텍스트파일에 적는다.
+                    f.write('댓글 등록 날짜 :  ' + comment['date'] + '\n') #댓글 등록 날짜를 텍스트파일에 적는다.
+                    f.write('댓글 내용 :  ' + comment['comment_text'] + '\n')  #댓글 내용을 텍스트파일에 적는다.
+                    count+=1  #총 댓글 개수를 파악해야 하므로 댓글이 달릴 때마다 +1을 한다.
+
+            f.write('===' * 30 + '\n') # === 곱하기 30 이면 60개의 = 이 생기겠져? 그리고 60개가 되면 다음줄로 넘어가게끔 설정 -> 이것도 결과물을 구분하기위해서 넣어준거임
+            
+            if result['image']: #게시물에 이미지가 있다면
+                image = open(result['title'] + '.jpg', 'wb') #이미지 저장을 위해 바이너리 형식으로 쓰기모드의 파일을 하나 생성 -> 이미지가 저장되겠져??
+                down_img = urllib.request.urlopen(result['image'])  #추출해낸 이미지의 링크에 urlopen함수로 데이터를 요청 -> down_img라는 변수에 넣겠다.
+                image.write(down_img.read())   #down_img에 있는 값(이미지 바이너리 파일)에 추출해낸 이미지의 링크 데이터를 넣어준다.
+                image.close() #생성된 이미지를 저장하고 종료
+
+        f.close() #for문이 다 실행 되고 나면 텍스트 파일을 저장하고 종료  
+
+crawler_running() #crawler_running()함수를 실행
+

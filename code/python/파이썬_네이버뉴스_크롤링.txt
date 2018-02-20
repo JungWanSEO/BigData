@@ -1,0 +1,94 @@
+import urllib.request
+from bs4 import BeautifulSoup
+import os
+import re
+#변수명 설정
+#save_path : 데이터가 들어있는 파일을 저장하는 곳 설정
+
+
+def get_save_path():  #파일명 저장할 곳 설정
+    
+    save_path = str(input("저장할 위치와 파일명을 적어주세요 : ")) #파일 저장할 곳 입력
+
+    save_path = save_path.replace("\\","/")  # '\'를 '/'로 바꾸겠다! -> (실제 저장할 때 C:\Python34\naver.txt이렇게 저장되는데 파이썬에서는 \가 아닌 /로 해석해야됨
+
+    if not os.path.isdir(os.path.split(save_path)[0]): # 파일 저장하는데 그 폴더가 없을 시 폴더를 생성하고 그 폴더 안에 파일을 생성
+        os.mkdir(os.path.split(save_path)[0])
+
+    return save_path  #저장 완료
+
+
+def fetch_post_list(): #list에 등록되어있는 기사 타이틀들의 링크로 접속하는 함수
+
+    URL = target_url   #홈페이지 주소를 URL이라는 변수에 대입
+
+    res = urllib.request.urlopen(URL)  #그 주소가 들어가지게끔 해주는 것(링크가 걸려있는 주소에 들어가기 위해) (지금 우리는 String으로 저장되어있는 상태)
+    
+    html = res.read()  #링크가 들어가지는 주소를 읽어서 html이라는 변수에 대입
+
+    soup = BeautifulSoup(html, 'html.parser')  #현재 저장되어있는 것은 String(문자열)이가 때문에 html문으로 바꾸기 위한 설정
+
+    search_head = soup.find('div', class_='srch_result_area headline') #<div>라는 태크에서 class이름이 srch_result_area headline을 가진 것의 내용들을 search_head라는 변수에 대입
+    title_list = search_head.find_all('div', class_='info')            #<div>라는 태그에서 class이름이 info을 가진 것의 모든 내용들을 title_list라는 변수에 대입
+    links = []                                                         #한 페이지 당 여러개의 title이 존재하기 때문에 배열을 생성
+    links = [div.find('a')['href'] for div in title_list]              #각 타이틀의 링크주소들을 links배열에 대입 
+    #print(links)
+    return links    #링크주소 저장 완료
+
+def remove_html_tags(data):   #<br>,<p>,\n, .....등등을 제거하기 위한 함수
+    
+    p = re.compile(r'<.*?>')   #저장된 데이터 중에서 <,*?> 가 있는지를 조사
+    
+    return p.sub(' ', data)    #<br>,<p>,\n등등을 ' ' 으로 교체
+               
+def fetch_post_contents(link): #링크 주소에 들어가면 그 내용을 출력하는 함수
+    
+    URL = link                 #링크 주소로 들어간 url를 URL이라는 변수에 대입
+    
+    res = urllib.request.urlopen(URL)  #마찬가지로 링크 주소도 마찬가지로 urlopen을 통해 링크주소URL를 res변수에 대입
+    
+    html = res.read()                  #링크 주소를 읽어서 html이라는 변수에 대입
+    
+    soup = BeautifulSoup(html, 'html.parser') #현재 저장되어있는 것은 String(문자열)이가 때문에 html문으로 바꾸기 위한 설정
+
+    total_page = soup.find('div', class_='content') #<div>라는 태크에서 class이름이 content을 가진 것의 내용들을 total_page라는 변수에 대입
+
+    title_contents = total_page.find('div', class_='article_info').find('h3')  #<div>라는 태크에서 class이름이 article_info을 가진 것의 내용 중에서도 <h3>태크의 내용을 title_contents라는 변수에 대입
+
+    main_contents = total_page.find('div', id='articleBodyContents') #<div>라는 태크에서 id가 articleBodyContents을 가진 것의 내용들을 main_contents라는 변수에 대입
+    
+    title = str(title_contents) + '\n' #타이틀 제목을 출력한 것을 str로 변환해서 title이라는 변수에 대입
+    
+    contents = str(main_contents) + '\n' #내용 출력한 것을 str로 변환해서 contents라는 변수에 대입
+
+    remove_title = remove_html_tags(title)  #title내용 중에서 <br>,<p>,\n.....등을 삭제해서 나온 내용을 remove_title이라는 변수에 대입
+    
+    remove_contents = remove_html_tags(contents)  #마찬가지로 contents내용 중에서 <br>,<p>,\n.....등을 삭제해서 나온 내용을 remove_contents이라는 변수에 대입
+
+    f.write(remove_title + remove_contents) # 파일에 데이터를 쓰기 위한 용도
+    
+    return {   #이건 생략해도 상관없음
+        'title' : remove_title,
+        'contents' : remove_contents
+        }
+
+maxPages = 0   #내가 원하는 페이지를 쓰기 위한 변수 설정 초기화
+maxPages = int(input("(네이버 뉴스)몇 페이지까지 크롤링? ")) #입력 설정
+links=[]  #리스트 배열 생성
+
+f = open(get_save_path(), 'w', encoding="utf-8") #파일 저장 위치를 설정
+
+for y in range(1,maxPages+1):
+    target_url1 = 'http://news.naver.com/main/search/search.nhn?query=%C0%FC%B1%E2%C2%F7&st=news.all&q_enc=EUC-KR&r_enc=UTF-8&r_format'
+    target_url2 = '=xml&rp=none&sm=all.basic&ic=all&so=datetime.dsc&rcnews=exist:032:005:086:020:021:081:022:023:025:028:038:469:&rcsection=exist:&detail=1&pd=1&start=26&display=25&page='
+    target_url3 = str(y)
+    target_url = target_url1 + target_url2 + target_url3  #지금의 경우 URL이 너무 길어서 짧게 쓰기 위해서 분할한 경우이다. 그냥 한줄로 써서 하나의 변수로 설정하면 됨
+    #print(total_target_url)
+    links = fetch_post_list()    #각 타이틀의 링크 주소를 links배열에 대입
+
+    for link in links: #links배열의 길이만큼을 돌린다.
+        links_contents = fetch_post_contents(link) #links배열의 인덱스를 대입(링크 주소겠죠?) 후 결과를 links_contents라는 변수에 대입
+        print(links_contents)   #결과 과정을 파이썬에서 보여주기 위한 설정
+
+
+f.close()  #파일 생성다 되었으면 저장 및 종료
